@@ -1,3 +1,5 @@
-export default function StartPage() {
-  return <h1>Quiz Quiz</h1>;
+import StartPage from './start/page';
+
+export default function Page() {
+  return <StartPage />;
 }

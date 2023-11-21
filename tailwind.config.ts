@@ -13,8 +13,13 @@ const config: Config = {
     extend: {
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+        'gradient-linear': 'linear-gradient(180deg, var(--tw-gradient-stops))',
         'gradient-conic':
           'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
+      },
+      colors: {
+        'start-color': 'rgb(237, 249, 246)',
+        'end-color': 'rgb(235, 248, 255)',
       },
     },
   },
