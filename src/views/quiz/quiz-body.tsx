@@ -1,21 +1,16 @@
 'use client';
 
 import Container from '@/components/container';
-import OptionsView from './components/options-view';
 import Question from './components/question';
-
-import useStore from '@/store';
+import Options from './components/options';
+import NextButton from './components/next-button';
 
 export default function QuizBody() {
-  const { quizQuestions, currentQuestion } = useStore((state) => ({
-    quizQuestions: state.quizQuestions,
-    currentQuestion: state.currentQuestion,
-  }));
-
   return (
     <Container direction="col">
-      <Question question={quizQuestions?.[currentQuestion]?.question} />
-      <OptionsView options={quizQuestions?.[currentQuestion]?.options} />
+      <Question />
+      <Options />
+      <NextButton />
     </Container>
   );
 }

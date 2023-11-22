@@ -1,7 +1,6 @@
-import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 
-import useStore from '@/store';
+import useQuizStore from '@/store';
 
 import type { QuizQuestion } from '@/services/quiz/type';
 
@@ -11,15 +10,15 @@ export const useQuiz = (
 ) => {
   const router = useRouter();
 
-  const { addQuizHistory, setCurrentQuestion } = useStore();
-  const [userAnswer, setUserAnswer] = useState('');
-  const [isAnswerChecked, setAnswerChecked] = useState(false);
+  const {
+    addQuizHistory,
+    setCurrentQuestion,
+    setUserAnswer,
+    setIsAnswerChecked,
+    userAnswer,
+  } = useQuizStore();
 
-  const handleOptionChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setUserAnswer(e.target.value);
-  };
-
-  const handleNext = () => {
+  const handleNextQuestion = () => {
     const isCorrect =
       userAnswer === quizQuestions[currentQuestion].correctAnswer;
     const quizHistory = {
@@ -35,19 +34,12 @@ export const useQuiz = (
       router.push('/result');
     }
 
-    setAnswerChecked(false);
+    setIsAnswerChecked(false);
     setUserAnswer('');
-  };
-
-  const handleCheckAnswer = () => {
-    setAnswerChecked(true);
   };
 
   return {
     userAnswer,
-    isAnswerChecked,
-    handleOptionChange,
-    handleNext,
-    handleCheckAnswer,
+    handleNextQuestion,
   };
 };
