@@ -1,19 +1,5 @@
-'use client';
-
-import { useSearchParams } from 'next/navigation';
-
-import Container from '@/components/container';
-
-import { useQuizQuery } from '@/hooks/query/quiz';
+import QuizBody from '@/views/quiz/quiz-body';
 
 export default function QuizPage() {
-  const category = useSearchParams().get('category');
-  const { data, isLoading } = useQuizQuery(Number(category));
-
-  console.log(data);
-  return (
-    <Container>
-      <h1>Quiz Page</h1>
-    </Container>
-  );
+  return <QuizBody />;
 }

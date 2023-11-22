@@ -3,7 +3,7 @@ import axios from 'axios';
 import { QuizDto, QuizQuestion } from './type';
 
 export default class QuizService {
-  static async fetchQuizQuestions(category: number) {
+  static async fetchQuizQuestions(category: number): Promise<QuizQuestion[]> {
     const amount = 10;
     const difficulty = 'easy';
     const type = 'multiple';
