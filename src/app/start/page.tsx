@@ -1,25 +1,15 @@
 'use client';
 
-import { useState } from 'react';
-import { useRouter } from 'next/navigation';
 import { Button, Select, SelectItem } from '@nextui-org/react';
 
 import Container from '@/components/container';
 
+import useStart from '@/hooks/hook/useStart';
+
 import { CATEGORIES } from '@/constants/categories';
 
 export default function StartPage() {
-  const router = useRouter();
-
-  const [category, setCategory] = useState(0);
-
-  const handleCategoryChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    setCategory(Number(e.target.value));
-  };
-
-  const handleStartQuiz = () => {
-    router.push(`/quiz?category=${category}`);
-  };
+  const { handleCategoryChange, handleStartQuiz } = useStart();
 
   return (
     <Container direction="col" className="justify-between">
