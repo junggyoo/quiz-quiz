@@ -10,6 +10,7 @@ export const useQuiz = (
   currentQuestion: number,
 ) => {
   const router = useRouter();
+
   const { addQuizHistory, setCurrentQuestion } = useStore();
   const [userAnswer, setUserAnswer] = useState('');
   const [isAnswerChecked, setAnswerChecked] = useState(false);

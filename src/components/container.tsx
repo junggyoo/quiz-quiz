@@ -1,4 +1,4 @@
-import { clsx } from 'clsx';
+import { cn } from '@nextui-org/react';
 
 interface ContainerProps {
   children: React.ReactNode;
@@ -11,7 +11,7 @@ export default function Container({
 }: ContainerProps) {
   return (
     <main
-      className={clsx(
+      className={cn(
         `flex flex-${direction}`,
         'w-[400px] min-h-[570px] p-5',
         'bg-white rounded shadow-lg',
