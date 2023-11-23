@@ -1,6 +1,7 @@
 import { Inter } from 'next/font/google';
 
 import Layout from '@/components/layout';
+
 import Providers from './providers';
 
 import type { Metadata } from 'next';

@@ -1,10 +1,10 @@
 import axios from 'axios';
 
-import { QuizDto, QuizQuestion } from './type';
+import type { QuizDto, QuizQuestion } from './type';
 
 export default class QuizService {
   static async fetchQuizQuestions(category: number): Promise<QuizQuestion[]> {
-    const amount = 10;
+    const amount = 5;
     const difficulty = 'easy';
     const type = 'multiple';
 

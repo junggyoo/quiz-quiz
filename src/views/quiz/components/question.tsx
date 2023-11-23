@@ -1,16 +1,12 @@
-import useQuizStore from '@/store';
+interface QuestionProps {
+  question: string;
+  numbering: number;
+}
 
-export default function Question() {
-  const { quizQuestions, currentQuestion } = useQuizStore((state) => ({
-    quizQuestions: state.quizQuestions,
-    currentQuestion: state.currentQuestion,
-  }));
-
-  const question = quizQuestions?.[currentQuestion]?.question;
-
+export default function Question({ question, numbering }: QuestionProps) {
   return (
     <p className="mb-5">
-      <span className="mr-2 text-2xl font-bold">Q.</span>
+      <span className="mr-2 text-2xl font-bold">{numbering}.Q</span>
       {question}
     </p>
   );

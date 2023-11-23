@@ -1,25 +1,22 @@
 import { Radio, RadioGroup, cn } from '@nextui-org/react';
 
-import useQuizStore from '@/store';
+interface OptionsProps {
+  options: string[];
+  isAnswerChecked: boolean;
+  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+}
 
-export default function Options() {
-  const { quizQuestions, currentQuestion, setUserAnswer, setIsAnswerChecked } =
-    useQuizStore((state) => ({
-      quizQuestions: state.quizQuestions,
-      currentQuestion: state.currentQuestion,
-      setUserAnswer: state.setUserAnswer,
-      setIsAnswerChecked: state.setIsAnswerChecked,
-    }));
-
-  const options = quizQuestions?.[currentQuestion]?.options;
-
-  const handleOptionChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setUserAnswer(e.target.value);
-    setIsAnswerChecked(true);
-  };
-
+export default function Options({
+  options,
+  isAnswerChecked,
+  onChange,
+}: OptionsProps) {
   return (
-    <RadioGroup color="success" onChange={handleOptionChange}>
+    <RadioGroup
+      color="success"
+      isDisabled={isAnswerChecked}
+      onChange={onChange}
+    >
       {options.map((option) => (
         <Radio
           key={option}

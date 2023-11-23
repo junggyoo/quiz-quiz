@@ -1,24 +1,19 @@
-import {
-  dehydrate,
-  HydrationBoundary,
-  QueryClient,
-} from '@tanstack/react-query';
+'use client';
 
-import StartBody from '@/views/start/start-body';
+import QuizView from '@/views/quiz/quiz-view';
+import ResultView from '@/views/result/result-view';
+import StartView from '@/views/start/start-view';
 
-import QuizService from '@/services/quiz';
+import useAppStore from '@/store/app';
 
-export default async function StartPage() {
-  const queryClient = new QueryClient();
-
-  await queryClient.prefetchQuery({
-    queryKey: ['quiz', 0],
-    queryFn: () => QuizService.fetchQuizQuestions(0),
-  });
+export default function AppPage() {
+  const view = useAppStore((state) => state.view);
 
   return (
-    <HydrationBoundary state={dehydrate(queryClient)}>
-      <StartBody />
-    </HydrationBoundary>
+    <>
+      {view === 'start' && <StartView />}
+      {view === 'quiz' && <QuizView />}
+      {view === 'result' && <ResultView />}
+    </>
   );
 }

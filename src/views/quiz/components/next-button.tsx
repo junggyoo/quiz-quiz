@@ -1,29 +1,25 @@
-'use client';
-
 import { Button } from '@nextui-org/react';
 
-import useQuizStore from '@/store';
-import { useQuiz } from '@/hooks/hook/useQuiz';
+interface NextButtonProps {
+  isAnswerChecked: boolean;
+  isLastQuestion: boolean;
+  onClick: () => void;
+}
 
-export default function NextButton() {
-  const { isAnswerChecked, quizQuestions, currentQuestion } = useQuizStore(
-    (state) => ({
-      isAnswerChecked: state.isAnswerChecked,
-      quizQuestions: state.quizQuestions,
-      currentQuestion: state.currentQuestion,
-    }),
-  );
-  const { handleNextQuestion } = useQuiz(quizQuestions, currentQuestion);
-
+export default function NextButton({
+  isAnswerChecked,
+  isLastQuestion,
+  onClick,
+}: NextButtonProps) {
   return (
     <Button
       variant="flat"
       color="success"
       isDisabled={!isAnswerChecked}
       className="mt-auto"
-      onClick={handleNextQuestion}
+      onClick={onClick}
     >
-      다음 문제
+      {isLastQuestion ? '결과 보기' : '다음 문제'}
     </Button>
   );
 }

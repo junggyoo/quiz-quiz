@@ -7,12 +7,12 @@ import Category from './components/Category';
 
 import useStart from '@/hooks/hook/useStart';
 
-export default function StartBody() {
-  const { isLoading, handleCategoryChange, handleQuizStart } = useStart();
+export default function StartView() {
+  const { handleCategoryChange, handleQuizStart } = useStart();
 
   return (
     <Container direction="col">
-      <h1 className="mt-10 text-3xl font-semibold">Quiz quiz</h1>
+      <h1 className="mt-8 text-3xl font-semibold">Quiz quiz</h1>
       <Category onCategoryChange={handleCategoryChange} />
       <Button
         variant="flat"
@@ -20,9 +20,8 @@ export default function StartBody() {
         size="lg"
         className="mt-auto"
         onClick={handleQuizStart}
-        isLoading={isLoading}
       >
-        {isLoading ? '퀴즈 생성 중...' : '퀴즈 풀기'}
+        퀴즈 풀기
       </Button>
     </Container>
   );

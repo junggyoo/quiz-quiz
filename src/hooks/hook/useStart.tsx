@@ -1,33 +1,20 @@
 import { useRouter } from 'next/navigation';
 
-import { useQuizQuery } from '@/hooks/query/quiz';
-
-import useStore from '@/store';
+import useAppStore from '@/store/app';
 
 export default function useStart() {
-  const router = useRouter();
-  const { category, setCategory, setQuizQuestions } = useStore((state) => ({
-    category: state.category,
-    setCategory: state.setCategory,
-    setQuizQuestions: state.setQuizQuestions,
-  }));
-
-  const { data, isLoading, isSuccess } = useQuizQuery(Number(category));
+  const { setCategory, setView } = useAppStore();
 
   const handleCategoryChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setCategory(Number(e.target.value));
   };
 
   const handleQuizStart = () => {
-    if (isSuccess) {
-      setQuizQuestions(data);
-      router.push('/quiz');
-    }
+    setView('quiz');
   };
 
   return {
     handleCategoryChange,
     handleQuizStart,
-    isLoading,
   };
 }

@@ -1,45 +1,62 @@
-import { useRouter } from 'next/navigation';
+import { useRef, useState } from 'react';
 
-import useQuizStore from '@/store';
+import useAppStore from '@/store/app';
 
 import type { QuizQuestion } from '@/services/quiz/type';
 
-export const useQuiz = (
-  quizQuestions: QuizQuestion[],
-  currentQuestion: number,
-) => {
-  const router = useRouter();
+export const useQuiz = (quizData: QuizQuestion[]) => {
+  const startTime = useRef(Date.now());
 
-  const {
-    addQuizHistory,
-    setCurrentQuestion,
-    setUserAnswer,
-    setIsAnswerChecked,
-    userAnswer,
-  } = useQuizStore();
+  const { setView, setQuizHistory, setTimeTaken } = useAppStore((state) => ({
+    setView: state.setView,
+    setQuizHistory: state.setQuizHistory,
+    setTimeTaken: state.setTimeTaken,
+  }));
+
+  const [userAnswer, setUserAnswer] = useState('');
+  const [isAnswerChecked, setIsAnswerChecked] = useState(false);
+  const [currentQuestion, setCurrentQuestion] = useState(0);
 
   const handleNextQuestion = () => {
-    const isCorrect =
-      userAnswer === quizQuestions[currentQuestion].correctAnswer;
+    const isCorrect = userAnswer === quizData[currentQuestion].correctAnswer;
     const quizHistory = {
-      ...quizQuestions[currentQuestion],
+      ...quizData[currentQuestion],
       userAnswer,
       isCorrect,
     };
-    addQuizHistory(quizHistory);
+    setQuizHistory(quizHistory);
 
-    if (currentQuestion < quizQuestions.length - 1) {
+    if (currentQuestion < quizData.length - 1) {
       setCurrentQuestion(currentQuestion + 1);
     } else {
-      router.push('/result');
+      setTimeTaken((Date.now() - startTime.current) / 1000);
+      setView('result');
     }
 
     setIsAnswerChecked(false);
     setUserAnswer('');
   };
 
+  const handleOptionChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setUserAnswer(e.target.value);
+    setIsAnswerChecked(true);
+  };
+
+  const correctAnswer = quizData[currentQuestion]?.correctAnswer;
+  const questionNumber = currentQuestion + 1;
+  const question = quizData[currentQuestion]?.question;
+  const options = quizData[currentQuestion]?.options;
+  const isLastQuestion = currentQuestion === quizData.length - 1;
+
   return {
     userAnswer,
+    isAnswerChecked,
+    correctAnswer,
+    questionNumber,
+    question,
+    options,
+    isLastQuestion,
     handleNextQuestion,
+    handleOptionChange,
   };
 };
