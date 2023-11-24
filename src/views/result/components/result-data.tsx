@@ -3,7 +3,7 @@ import { Divider } from '@nextui-org/react';
 import ResultRow from './result-row';
 
 interface ResultDataProps {
-  timeTaken: number;
+  timeTaken: string;
   correctAnswerCount: number;
   wrongAnswerCount: number;
 }
@@ -17,7 +17,7 @@ export default function ResutlData({
     <div>
       <ResultRow>
         <span className="text-gray-500">소요 시간</span>
-        <span className="text-lg font-semibold">{timeTaken}초</span>
+        <span className="text-lg font-semibold">{timeTaken}</span>
       </ResultRow>
       <Divider className="my-2" />
       <ResultRow>

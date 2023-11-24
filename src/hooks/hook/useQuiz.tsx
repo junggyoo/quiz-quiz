@@ -3,6 +3,7 @@ import { useRef, useState } from 'react';
 import useAppStore from '@/store/app';
 
 import type { QuizQuestion } from '@/services/quiz/type';
+import { getTimeTaken } from '@/utils';
 
 export const useQuiz = (quizData: QuizQuestion[]) => {
   const startTime = useRef(Date.now());
@@ -32,9 +33,9 @@ export const useQuiz = (quizData: QuizQuestion[]) => {
     if (currentQuestion < quizData.length - 1) {
       setCurrentQuestion(currentQuestion + 1);
     } else {
-      setTimeTaken(
-        Math.floor((Date.now() - startTime.current) / 1000),
-      );
+      const endTime = Date.now();
+      const timeTaken = getTimeTaken(startTime.current, endTime);
+      setTimeTaken(timeTaken);
       setView('result');
     }
 

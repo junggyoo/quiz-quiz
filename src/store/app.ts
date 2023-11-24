@@ -8,7 +8,7 @@ type State = {
   category: number;
   quizData: QuizQuestion[];
   quizHistory: QuizHistory[];
-  timeTaken: number;
+  timeTaken: string;
 };
 
 type Actions = {
@@ -16,7 +16,7 @@ type Actions = {
   setCategory: (category: number) => void;
   setQuizData: (quizData: QuizQuestion[]) => void;
   setQuizHistory: (quizHistory: QuizHistory) => void;
-  setTimeTaken: (timeTaken: number) => void;
+  setTimeTaken: (timeTaken: string) => void;
   resetQuizHistory: () => void;
 };
 
@@ -25,7 +25,7 @@ const useAppStore = create<State & Actions>((set) => ({
   category: 0,
   quizData: [],
   quizHistory: [],
-  timeTaken: 0,
+  timeTaken: '',
 
   setCategory: (category) => set({ category }),
   setView: (view) => set({ view }),

@@ -2,7 +2,7 @@ import ResutlData from './result-data';
 import CorrectAnswerRate from './correct-answer-rate';
 
 interface QuizResultProps {
-  timeTaken: number;
+  timeTaken: string;
   correctAnswerCount: number;
   wrongAnswerCount: number;
   correctAnswerRate: number;
