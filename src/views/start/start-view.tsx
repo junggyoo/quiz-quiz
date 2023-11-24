@@ -3,7 +3,7 @@
 import { Button } from '@nextui-org/react';
 
 import Container from '@/components/container';
-import Category from './components/Category';
+import Category from './components/category';
 
 import useStart from '@/hooks/hook/useStart';
 

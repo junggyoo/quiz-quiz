@@ -3,7 +3,7 @@ import { cn } from '@nextui-org/react';
 import type { PropsWithChildren } from 'react';
 
 interface TextProps {
-  size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl' | '3xl';
+  size?: 'xs' | 'sm' | 'base' | 'lg' | 'xl' | '2xl' | '3xl';
 
   color?: string;
 
@@ -25,7 +25,7 @@ interface TextProps {
 }
 
 export default function Text({
-  size = 'md',
+  size = 'base',
   color = 'black',
   weight = 'normal',
   align = 'left',
