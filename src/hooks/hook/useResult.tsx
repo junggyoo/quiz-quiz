@@ -3,6 +3,12 @@ import confetti from 'canvas-confetti';
 
 import useAppStore from '@/store/app';
 
+const confettiOptions = {
+  particleCount: 100,
+  spread: 60,
+  origin: { y: 0.7 },
+};
+
 export default function useResult() {
   const { quizHistory, timeTaken, setView, resetQuizHistory } =
     useAppStore((state) => ({
@@ -31,12 +37,6 @@ export default function useResult() {
     Math.floor((correctAnswerCount / quizHistory.length) * 100) || 0;
 
   useEffect(() => {
-    const confettiOptions = {
-      particleCount: 100,
-      spread: 60,
-      origin: { y: 0.7 },
-    };
-
     confetti(confettiOptions);
   }, []);
 

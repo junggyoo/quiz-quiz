@@ -23,7 +23,7 @@ export default function ResultView() {
 
   return (
     <Container direction="col">
-      <Tabs fullWidth aria-label="Options">
+      <Tabs fullWidth aria-label="Menu" size="lg">
         <Tab key="quiz-result" title="퀴즈 결과">
           <QuizResult
             timeTaken={timeTaken}

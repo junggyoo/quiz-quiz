@@ -15,6 +15,7 @@ export default function NextButton({
     <Button
       variant="flat"
       color="success"
+      size="lg"
       isDisabled={!isAnswerChecked}
       className="mt-auto"
       onClick={onClick}

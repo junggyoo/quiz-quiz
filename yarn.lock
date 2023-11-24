@@ -1828,10 +1828,10 @@
   dependencies:
     "@tanstack/query-core" "5.8.3"
 
-"@types/canvas-confetti@1.6.0":
-  "integrity" "sha512-Yq6rIccwcco0TLD5SMUrIM7Fk7Fe/C0jmNRxJJCLtAF6gebDkPuUjK5EHedxecm69Pi/aA+It39Ux4OHmFhjRw=="
-  "resolved" "https://registry.npmjs.org/@types/canvas-confetti/-/canvas-confetti-1.6.0.tgz"
-  "version" "1.6.0"
+"@types/canvas-confetti@^1.6.3":
+  "integrity" "sha512-yKVMDzWJ6g0s8TDI3VERfLMCOh0oHqZUnfK+o3VVjR2mFsLynUgb2lR+3IRaEJMza3BKbV9pkoirmM23YhKozA=="
+  "resolved" "https://registry.npmjs.org/@types/canvas-confetti/-/canvas-confetti-1.6.3.tgz"
+  "version" "1.6.3"
 
 "@types/json5@^0.0.29":
   "integrity" "sha512-dRLjCWHYg4oaA77cxO64oO+7JwCwnIzkZPdrrC71jQmQtlhM556pwKo5bUzqvZndkVbeFLIIi+9TC40JNF5hNQ=="
@@ -2187,11 +2187,6 @@
   "integrity" "sha512-jieDCn9OnPgFu5q+rbOGUmIGOjzgOnecW1/6KH07kAFAMwOczcTc4clde9pdyUPIAd/2wxZ8C5u7mBAcOpGK8Q=="
   "resolved" "https://registry.npmjs.org/canvas-confetti/-/canvas-confetti-1.9.1.tgz"
   "version" "1.9.1"
-
-"canvas-confetti@1.6.0":
-  "integrity" "sha512-ej+w/m8Jzpv9Z7W7uJZer14Ke8P2ogsjg4ZMGIuq4iqUOqY2Jq8BNW42iGmNfRwREaaEfFIczLuZZiEVSYNHAA=="
-  "resolved" "https://registry.npmjs.org/canvas-confetti/-/canvas-confetti-1.6.0.tgz"
-  "version" "1.6.0"
 
 "chalk@^4.0.0":
   "integrity" "sha512-oKnbhFyRIXpUuez8iBMmyEa4nbj4IOQyuhc/wy9kY7/WVPcwIO9VA668Pu8RkO7+0G76SLROeyw9CpQ061i4mA=="
@@ -3783,14 +3778,6 @@
   "integrity" "sha512-NuaNSa6flKT5JaSYQzJok04JzTL1CA6aGhv5rfLW3PgqA+M2ChpZQnAC8h8i4ZFkBS8X5RqkDBHA7r4hej3K9A=="
   "resolved" "https://registry.npmjs.org/queue-microtask/-/queue-microtask-1.2.3.tgz"
   "version" "1.2.3"
-
-"react-canvas-confetti@^1.4.0":
-  "integrity" "sha512-ByBdSsNGUxlcJuOqSgbZw1VWNNO3b7njTmnuM1Y36mvwdCkCRs8rLkRAjn6MQK96LgWcfDVhr6ZT5olm2w8Zwg=="
-  "resolved" "https://registry.npmjs.org/react-canvas-confetti/-/react-canvas-confetti-1.4.0.tgz"
-  "version" "1.4.0"
-  dependencies:
-    "@types/canvas-confetti" "1.6.0"
-    "canvas-confetti" "1.6.0"
 
 "react-dom@*", "react-dom@^16.8.0 || ^17.0.0-rc.1 || ^18.0.0", "react-dom@^18", "react-dom@^18.0.0", "react-dom@^18.2.0", "react-dom@>=18":
   "integrity" "sha512-6IMTriUmvsjHUjNtEDudZfuDQUoWXVxKHhlEGSk81n4YFS+r/Kl99wXiwlVXtPBtJenozv2P+hxDsw9eA7Xo6g=="
