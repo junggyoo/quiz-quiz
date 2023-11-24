@@ -13,7 +13,7 @@ export default function Container({
     <main
       className={cn(
         `flex flex-${direction}`,
-        'w-[420px] h-[500px] p-5 overflow-auto',
+        'w-[450px] h-[550px] p-5 overflow-auto',
         'bg-white rounded shadow-lg',
       )}
     >

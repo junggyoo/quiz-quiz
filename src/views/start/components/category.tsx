@@ -11,7 +11,7 @@ export default function Category({
 }: CategoryProps) {
   return (
     <Select
-      size="sm"
+      size="md"
       label="카테고리"
       placeholder="카테고리를 선택해주세요."
       className="mt-10"
