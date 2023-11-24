@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { decode } from 'html-entities';
 
 import type { QuizDto, QuizQuestion } from './type';
 
@@ -28,14 +29,14 @@ export default class QuizService {
     const options = this.shuffleArray([
       ...quiz.incorrect_answers,
       quiz.correct_answer,
-    ]);
+    ]).map((option) => decode(option));
 
     return {
       type,
       difficulty,
       category,
-      question,
-      correctAnswer: correct_answer,
+      question: decode(question),
+      correctAnswer: decode(correct_answer),
       options,
     };
   }
