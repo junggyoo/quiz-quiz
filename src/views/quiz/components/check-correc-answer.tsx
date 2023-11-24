@@ -13,7 +13,12 @@ export default function CheckCorrectAnswer({
 
   if (isCorrect) {
     return (
-      <Chip size="md" color="primary" variant="solid" className="mt-4">
+      <Chip
+        size="md"
+        color="primary"
+        variant="solid"
+        className="mt-4"
+      >
         정답입니다.
       </Chip>
     );

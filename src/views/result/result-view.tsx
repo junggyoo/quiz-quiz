@@ -31,19 +31,23 @@ export default function ResultView() {
           퀴즈 히스토리
         </Tab>
       </Tabs>
-      <div className="flex flex-col space-y-2 mt-auto">
-        <Button size="md" color="primary" variant="flat" onClick={handleRetry}>
-          다시풀기
-        </Button>
-        <Button
-          size="md"
-          color="success"
-          variant="flat"
-          onClick={handleGoStart}
-        >
-          처음으로
-        </Button>
-      </div>
+      <Button
+        size="md"
+        color="primary"
+        variant="flat"
+        onClick={handleRetry}
+        className="mt-auto mb-2"
+      >
+        다시풀기
+      </Button>
+      <Button
+        size="md"
+        color="success"
+        variant="flat"
+        onClick={handleGoStart}
+      >
+        처음으로
+      </Button>
     </Container>
   );
 }

@@ -7,18 +7,21 @@ import type { QuizQuestion } from '@/services/quiz/type';
 export const useQuiz = (quizData: QuizQuestion[]) => {
   const startTime = useRef(Date.now());
 
-  const { setView, setQuizHistory, setTimeTaken } = useAppStore((state) => ({
-    setView: state.setView,
-    setQuizHistory: state.setQuizHistory,
-    setTimeTaken: state.setTimeTaken,
-  }));
+  const { setView, setQuizHistory, setTimeTaken } = useAppStore(
+    (state) => ({
+      setView: state.setView,
+      setQuizHistory: state.setQuizHistory,
+      setTimeTaken: state.setTimeTaken,
+    }),
+  );
 
   const [userAnswer, setUserAnswer] = useState('');
   const [isAnswerChecked, setIsAnswerChecked] = useState(false);
   const [currentQuestion, setCurrentQuestion] = useState(0);
 
   const handleNextQuestion = () => {
-    const isCorrect = userAnswer === quizData[currentQuestion].correctAnswer;
+    const isCorrect =
+      userAnswer === quizData[currentQuestion].correctAnswer;
     const quizHistory = {
       ...quizData[currentQuestion],
       userAnswer,
@@ -29,7 +32,9 @@ export const useQuiz = (quizData: QuizQuestion[]) => {
     if (currentQuestion < quizData.length - 1) {
       setCurrentQuestion(currentQuestion + 1);
     } else {
-      setTimeTaken(Math.floor((Date.now() - startTime.current) / 1000));
+      setTimeTaken(
+        Math.floor((Date.now() - startTime.current) / 1000),
+      );
       setView('result');
     }
 
@@ -37,7 +42,9 @@ export const useQuiz = (quizData: QuizQuestion[]) => {
     setUserAnswer('');
   };
 
-  const handleOptionChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleOptionChange = (
+    e: React.ChangeEvent<HTMLInputElement>,
+  ) => {
     setUserAnswer(e.target.value);
     setIsAnswerChecked(true);
   };

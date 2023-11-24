@@ -6,7 +6,9 @@ interface CategoryProps {
   onCategoryChange: (e: React.ChangeEvent<HTMLSelectElement>) => void;
 }
 
-export default function Category({ onCategoryChange }: CategoryProps) {
+export default function Category({
+  onCategoryChange,
+}: CategoryProps) {
   return (
     <Select
       size="sm"

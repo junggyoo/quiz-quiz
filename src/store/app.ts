@@ -21,7 +21,7 @@ type Actions = {
 };
 
 const useAppStore = create<State & Actions>((set) => ({
-  view: 'start',
+  view: 'result',
   category: 0,
   quizData: [],
   quizHistory: [],
@@ -31,7 +31,9 @@ const useAppStore = create<State & Actions>((set) => ({
   setView: (view) => set({ view }),
   setQuizData: (quizData) => set({ quizData }),
   setQuizHistory: (quizHistory) =>
-    set((state) => ({ quizHistory: [...state.quizHistory, quizHistory] })),
+    set((state) => ({
+      quizHistory: [...state.quizHistory, quizHistory],
+    })),
   setTimeTaken: (timeTaken) => set({ timeTaken }),
   resetQuizHistory: () => set({ quizHistory: [] }),
 }));

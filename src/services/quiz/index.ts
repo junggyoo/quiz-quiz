@@ -3,7 +3,9 @@ import axios from 'axios';
 import type { QuizDto, QuizQuestion } from './type';
 
 export default class QuizService {
-  static async fetchQuizQuestions(category: number): Promise<QuizQuestion[]> {
+  static async fetchQuizQuestions(
+    category: number,
+  ): Promise<QuizQuestion[]> {
     const amount = 5;
     const difficulty = 'easy';
     const type = 'multiple';
@@ -20,7 +22,8 @@ export default class QuizService {
   }
 
   static generateQuizQuestion(quiz: QuizDto): QuizQuestion {
-    const { type, difficulty, category, question, correct_answer } = quiz;
+    const { type, difficulty, category, question, correct_answer } =
+      quiz;
 
     const options = this.shuffleArray([
       ...quiz.incorrect_answers,

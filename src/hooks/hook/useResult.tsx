@@ -4,14 +4,13 @@ import confetti from 'canvas-confetti';
 import useAppStore from '@/store/app';
 
 export default function useResult() {
-  const { quizHistory, timeTaken, setView, resetQuizHistory } = useAppStore(
-    (state) => ({
+  const { quizHistory, timeTaken, setView, resetQuizHistory } =
+    useAppStore((state) => ({
       quizHistory: state.quizHistory,
       timeTaken: state.timeTaken,
       setView: state.setView,
       resetQuizHistory: state.resetQuizHistory,
-    }),
-  );
+    }));
 
   const handleRetry = () => {
     resetQuizHistory();
@@ -25,7 +24,8 @@ export default function useResult() {
 
   const correctAnswerCount =
     quizHistory.filter((quiz) => quiz.isCorrect).length || 0;
-  const wrongAnswerCount = quizHistory.length - correctAnswerCount || 0;
+  const wrongAnswerCount =
+    quizHistory.length - correctAnswerCount || 0;
 
   const correctAnswerRate =
     Math.floor((correctAnswerCount / quizHistory.length) * 100) || 0;
