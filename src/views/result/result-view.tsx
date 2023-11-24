@@ -13,6 +13,7 @@ export default function ResultView() {
     wrongAnswerCount,
     correctAnswerRate,
     handleRetry,
+    handleGoStart,
   } = useResult();
 
   return (
@@ -34,7 +35,12 @@ export default function ResultView() {
         <Button size="md" color="primary" variant="flat" onClick={handleRetry}>
           다시풀기
         </Button>
-        <Button size="md" color="success" variant="flat">
+        <Button
+          size="md"
+          color="success"
+          variant="flat"
+          onClick={handleGoStart}
+        >
           처음으로
         </Button>
       </div>

@@ -18,6 +18,11 @@ export default function useResult() {
     setView('quiz');
   };
 
+  const handleGoStart = () => {
+    resetQuizHistory();
+    setView('start');
+  };
+
   const correctAnswerCount =
     quizHistory.filter((quiz) => quiz.isCorrect).length || 0;
   const wrongAnswerCount = quizHistory.length - correctAnswerCount || 0;
@@ -41,5 +46,6 @@ export default function useResult() {
     correctAnswerRate,
     timeTaken,
     handleRetry,
+    handleGoStart,
   };
 }
