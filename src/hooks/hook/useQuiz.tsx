@@ -29,7 +29,7 @@ export const useQuiz = (quizData: QuizQuestion[]) => {
     if (currentQuestion < quizData.length - 1) {
       setCurrentQuestion(currentQuestion + 1);
     } else {
-      setTimeTaken((Date.now() - startTime.current) / 1000);
+      setTimeTaken(Math.floor((Date.now() - startTime.current) / 1000));
       setView('result');
     }
 
