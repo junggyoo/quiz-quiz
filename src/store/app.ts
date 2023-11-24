@@ -17,10 +17,11 @@ type Actions = {
   setQuizData: (quizData: QuizQuestion[]) => void;
   setQuizHistory: (quizHistory: QuizHistory) => void;
   setTimeTaken: (timeTaken: number) => void;
+  resetQuizHistory: () => void;
 };
 
 const useAppStore = create<State & Actions>((set) => ({
-  view: 'result',
+  view: 'start',
   category: 0,
   quizData: [],
   quizHistory: [],
@@ -32,6 +33,7 @@ const useAppStore = create<State & Actions>((set) => ({
   setQuizHistory: (quizHistory) =>
     set((state) => ({ quizHistory: [...state.quizHistory, quizHistory] })),
   setTimeTaken: (timeTaken) => set({ timeTaken }),
+  resetQuizHistory: () => set({ quizHistory: [] }),
 }));
 
 export default useAppStore;
