@@ -2,7 +2,7 @@ import { cn } from '@nextui-org/react';
 
 import type { PropsWithChildren } from 'react';
 
-export default function Stack({ children }: PropsWithChildren) {
+export default function ResultRow({ children }: PropsWithChildren) {
   return (
     <div
       className={cn(

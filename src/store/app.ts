@@ -21,7 +21,7 @@ type Actions = {
 };
 
 const useAppStore = create<State & Actions>((set) => ({
-  view: 'result',
+  view: 'start',
   category: 0,
   quizData: [],
   quizHistory: [],

@@ -1,8 +1,6 @@
 import { Divider } from '@nextui-org/react';
 
-import Text from '@/components/text';
-
-import Stack from './stack';
+import ResultRow from './result-row';
 
 interface ResultDataProps {
   timeTaken: number;
@@ -17,26 +15,24 @@ export default function ResutlData({
 }: ResultDataProps) {
   return (
     <div>
-      <Stack>
-        <Text color="slate-400">소요 시간</Text>
-        <Text size="lg" weight="semibold">
-          {timeTaken}초
-        </Text>
-      </Stack>
+      <ResultRow>
+        <span className="text-gray-500">소요 시간</span>
+        <span className="text-lg font-semibold">{timeTaken}초</span>
+      </ResultRow>
       <Divider className="my-2" />
-      <Stack>
-        <Text color="slate-400">정답 수</Text>
-        <Text size="lg" weight="semibold">
+      <ResultRow>
+        <span className="text-gray-500">정답 수</span>
+        <span className="text-lg font-semibold">
           {correctAnswerCount}개
-        </Text>
-      </Stack>
+        </span>
+      </ResultRow>
       <Divider className="my-2" />
-      <Stack>
-        <Text color="slate-400">오답 수</Text>
-        <Text size="lg" weight="semibold">
+      <ResultRow>
+        <span className="text-gray-500">오답 수</span>
+        <span className="text-lg font-semibold">
           {wrongAnswerCount}개
-        </Text>
-      </Stack>
+        </span>
+      </ResultRow>
     </div>
   );
 }

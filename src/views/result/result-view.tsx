@@ -6,6 +6,7 @@ import QuizResult from './components/quiz-result';
 import ReviewNote from './components/review-note';
 
 import useResult from '@/hooks/hook/useResult';
+
 import useAppStore from '@/store/app';
 
 export default function ResultView() {

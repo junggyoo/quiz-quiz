@@ -1,7 +1,5 @@
 import { CircularProgress } from '@nextui-org/react';
 
-import Text from '@/components/text';
-
 interface CorrectAnswerRateProps {
   correctAnswerRate: number;
 }
@@ -11,7 +9,7 @@ export default function CorrectAnswerRate({
 }: CorrectAnswerRateProps) {
   return (
     <div className="text-center">
-      <Text color="slate-400">정답률</Text>
+      <span className="text-gray-500">정답률</span>
       <CircularProgress
         classNames={{
           svg: 'w-24 h-24 drop-shadow-md',
