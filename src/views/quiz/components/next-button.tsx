@@ -14,7 +14,7 @@ export default function NextButton({
   return (
     <Button
       variant="flat"
-      color="success"
+      color={isAnswerChecked ? 'success' : 'default'}
       size="lg"
       isDisabled={!isAnswerChecked}
       className="mt-auto"
