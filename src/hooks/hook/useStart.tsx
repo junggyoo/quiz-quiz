@@ -1,5 +1,3 @@
-import { useRouter } from 'next/navigation';
-
 import useAppStore from '@/store/app';
 
 export default function useStart() {
