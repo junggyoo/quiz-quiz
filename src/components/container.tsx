@@ -8,7 +8,8 @@ interface ContainerProps {
 export default function Container({
   children,
   direction = 'row',
-}: ContainerProps) {
+  ...rest
+}: ContainerProps & React.HTMLAttributes<HTMLDivElement>) {
   return (
     <main
       className={cn(
@@ -16,6 +17,7 @@ export default function Container({
         'w-[450px] h-[550px] p-5 overflow-auto',
         'bg-white rounded shadow-lg',
       )}
+      {...rest}
     >
       {children}
     </main>

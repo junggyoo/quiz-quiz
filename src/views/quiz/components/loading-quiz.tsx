@@ -4,7 +4,7 @@ import Container from '@/components/container';
 
 export default function QuizLoading() {
   return (
-    <Container direction="col">
+    <Container direction="col" data-testid="quiz-loading">
       <Skeleton className="mb-[20px] rounded-lg">
         <div className="h-[60px]  rounded-lg bg-default-300"></div>
       </Skeleton>

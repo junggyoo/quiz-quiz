@@ -1,15 +1,10 @@
-import {
-  renderHook,
-  act,
-  waitFor,
-  RenderHookResult,
-} from '@testing-library/react';
+import { renderHook, act, waitFor } from '@testing-library/react';
 
 import { useQuiz } from '@/hooks/hook/useQuiz';
 
 import useAppStore from '@/store/app';
 
-import { MOCK_QUIZ_DATA } from '@/mocks/quiz';
+import { MOCK_QUIZ_DATA } from '@/mocks/data/quiz';
 
 type UseQuizHookResult = ReturnType<typeof useQuiz>;
 

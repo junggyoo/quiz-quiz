@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 'use client';
 
 import Container from '@/components/container';
@@ -25,7 +26,7 @@ export default function QuizView() {
     isLastQuestion,
     handleNextQuestion,
     handleOptionChange,
-  } = useQuiz(data);
+  } = useQuiz(data || []);
 
   if (isLoading) {
     return <LoadingQuiz />;
