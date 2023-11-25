@@ -50,11 +50,13 @@ export default function QuizView() {
           userAnswer={userAnswer}
         />
       )}
-      <NextButton
-        isAnswerChecked={isAnswerChecked}
-        isLastQuestion={isLastQuestion}
-        onClick={handleNextQuestion}
-      />
+      {isAnswerChecked && (
+        <NextButton
+          isAnswerChecked={isAnswerChecked}
+          isLastQuestion={isLastQuestion}
+          onClick={handleNextQuestion}
+        />
+      )}
     </Container>
   );
 }
