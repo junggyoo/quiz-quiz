@@ -52,7 +52,6 @@ export default function QuizView() {
       )}
       {isAnswerChecked && (
         <NextButton
-          isAnswerChecked={isAnswerChecked}
           isLastQuestion={isLastQuestion}
           onClick={handleNextQuestion}
         />

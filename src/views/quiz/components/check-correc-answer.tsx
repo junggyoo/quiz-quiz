@@ -18,6 +18,7 @@ export default function CheckCorrectAnswer({
         color="primary"
         variant="solid"
         className="mt-4"
+        data-testid="correct-answer"
       >
         정답입니다.
       </Chip>
@@ -31,6 +32,7 @@ export default function CheckCorrectAnswer({
         color="danger"
         variant="solid"
         className="mt-4"
+        data-testid="check-correct-answer"
       >{`오답입니다. ( 정답: ${correctAnswer} )`}</Chip>
     );
   }
