@@ -2,8 +2,9 @@ import { useRef, useState } from 'react';
 
 import useAppStore from '@/store/app';
 
-import type { QuizQuestion } from '@/services/quiz/type';
 import { getTimeTaken } from '@/utils';
+
+import type { QuizQuestion } from '@/services/quiz/type';
 
 export const useQuiz = (quizData: QuizQuestion[]) => {
   const startTime = useRef(Date.now());

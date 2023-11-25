@@ -13,7 +13,7 @@ jest.mock('@/hooks/hook/useStart', () => {
   });
 });
 
-describe('StartView component', () => {
+describe('StartView Component', () => {
   afterEach(() => {
     mockHandleCategoryChange.mockClear();
     mockHandleQuizStart.mockClear();
