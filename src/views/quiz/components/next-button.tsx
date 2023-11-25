@@ -16,6 +16,7 @@ export default function NextButton({
       size="lg"
       className="mt-auto"
       onClick={onClick}
+      data-testid="next-button"
     >
       {isLastQuestion ? '결과 보기' : '다음 문제'}
     </Button>
