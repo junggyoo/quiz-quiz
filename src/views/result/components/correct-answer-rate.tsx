@@ -11,6 +11,7 @@ export default function CorrectAnswerRate({
     <div className="text-center">
       <span className="text-gray-500">정답률</span>
       <CircularProgress
+        aria-label="정답률"
         classNames={{
           svg: 'w-24 h-24 drop-shadow-md',
           value: 'text-xl font-semibold text-black',
