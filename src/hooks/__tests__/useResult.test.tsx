@@ -10,54 +10,27 @@ const useAppStoreMock = useAppStore as jest.MockedFunction<
 
 jest.mock('@/store/app', () => ({
   __esModule: true,
-  default: jest.fn().mockReturnValue({
-    quizHistory: [],
-    timeTaken: 0,
-    setView: jest.fn(),
-    resetQuizHistory: jest.fn(),
-  }),
+  default: jest.fn(),
 }));
+
+jest.mock('canvas-confetti', () => {
+  return jest.fn();
+});
 
 describe('useResult hook test', () => {
   afterEach(() => {
     jest.clearAllMocks();
   });
 
-  it('정답 수와 오답 수가 계산 되어야 한다.', () => {
-    useAppStoreMock.mockImplementation(() => ({
-      quizHistory: [
-        { isCorrect: true },
-        { isCorrect: true },
-        { isCorrect: true },
-        { isCorrect: true },
-        { isCorrect: false },
-      ],
-      timeTaken: 100,
-      setView: jest.fn(),
-      resetQuizHistory: jest.fn(),
-    }));
-
-    const { result } = renderHook(() => useResult());
+  it('useResult 훅이 렌더링 되면 정답 수와 오답 수가 계산 되어야 한다.', () => {
+    const { result } = renderUseResult(4, 1);
 
     expect(result.current.correctAnswerCount).toBe(4);
     expect(result.current.wrongAnswerCount).toBe(1);
   });
 
-  it('정답률이 계산 되어야 한다.', () => {
-    useAppStoreMock.mockImplementation(() => ({
-      quizHistory: [
-        { isCorrect: true },
-        { isCorrect: true },
-        { isCorrect: true },
-        { isCorrect: true },
-        { isCorrect: false },
-      ],
-      timeTaken: 100,
-      setView: jest.fn(),
-      resetQuizHistory: jest.fn(),
-    }));
-
-    const { result } = renderHook(() => useResult());
+  it('useResult 훅이 렌더링 되면 정답률이 계산 되어야 한다.', () => {
+    const { result } = renderUseResult(4, 1);
 
     expect(result.current.correctAnswerRate).toBe(80);
   });
@@ -72,7 +45,6 @@ describe('useResult hook test', () => {
         { isCorrect: false },
         { isCorrect: true },
       ],
-      timeTaken: 100,
       setView: setViewMock,
       resetQuizHistory: resetQuizHistoryMock,
     }));
@@ -81,7 +53,7 @@ describe('useResult hook test', () => {
 
     result.current.handleRetry();
 
-    expect(resetQuizHistoryMock).toHaveBeenCalledTimes(1);
+    expect(useAppStore().resetQuizHistory).toHaveBeenCalledTimes(1);
     expect(setViewMock).toHaveBeenCalledWith('quiz');
   });
 
@@ -94,7 +66,6 @@ describe('useResult hook test', () => {
         { isCorrect: false },
         { isCorrect: true },
       ],
-      timeTaken: 100,
       setView: setViewMock,
       resetQuizHistory: jest.fn(),
     }));
@@ -106,3 +77,27 @@ describe('useResult hook test', () => {
     expect(setViewMock).toHaveBeenCalledWith('start');
   });
 });
+
+const createQuizHistory = (
+  correctCount: number,
+  wrongCount: number,
+) => {
+  return [
+    ...Array(correctCount).fill({ isCorrect: true }),
+    ...Array(wrongCount).fill({ isCorrect: false }),
+  ];
+};
+
+const renderUseResult = (
+  correctCount: number,
+  wrongCount: number,
+) => {
+  useAppStoreMock.mockImplementation(() => ({
+    quizHistory: createQuizHistory(correctCount, wrongCount),
+    timeTaken: 100,
+    setView: jest.fn(),
+    resetQuizHistory: jest.fn(),
+  }));
+
+  return renderHook(() => useResult());
+};
