@@ -29,13 +29,21 @@ export default function ReviewNote({ quizHistory }: ReviewNoteProps) {
               <Code className="mb-1">
                 <span className="text-xs text-gray-600">
                   내가 선택한 답:
-                  <span className="ml-1 text-sm">{userAnswer}</span>
+                  <span
+                    className="ml-1 text-sm"
+                    data-testid={`user-answer-${index}`}
+                  >
+                    {userAnswer}
+                  </span>
                 </span>
               </Code>
               <Code color="danger">
                 <span className="text-xs text-gray-600">
                   정답:
-                  <span className="ml-1 text-sm ">
+                  <span
+                    className="ml-1 text-sm"
+                    data-testid={`correct-answer-${index}`}
+                  >
                     {correctAnswer}
                   </span>
                 </span>

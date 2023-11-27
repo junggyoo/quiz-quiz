@@ -4,6 +4,8 @@ import '@testing-library/jest-dom';
 import ResultView from '../result-view';
 
 import useResult from '@/hooks/hook/useResult';
+import { MOCK_QUIZ_HISTORY } from '@/mocks/data/quiz';
+import ReviewNote from '../components/review-note';
 
 jest.mock('@/hooks/hook/useResult', () => ({
   __esModule: true,
@@ -51,5 +53,46 @@ describe('ResultView Component', () => {
     fireEvent.click(screen.getByText('처음으로'));
 
     expect(handleGoStartMock).toHaveBeenCalledTimes(1);
+  });
+
+  describe('ReviewNote Component', () => {
+    const quizHistory = MOCK_QUIZ_HISTORY;
+
+    beforeEach(() => {
+      render(<ReviewNote quizHistory={quizHistory} />);
+    });
+
+    it('퀴즈 히스토리의 문항이 올바르게 렌더링되어야 한다.', () => {
+      quizHistory.forEach((quiz) => {
+        const question = screen.getByText(new RegExp(quiz.question));
+
+        expect(question).toBeInTheDocument();
+      });
+    });
+
+    it('퀴즈 히스토리의 정답 여부가 마크가 올바르게 렌더링되어야 한다.', () => {
+      quizHistory.forEach((quiz) => {
+        const question = screen.getByText(new RegExp(quiz.question));
+        const isCorrect = question?.textContent?.startsWith(
+          quiz.isCorrect ? '✅' : '❌',
+        );
+
+        expect(isCorrect).toBe(true);
+      });
+    });
+
+    it('"내가 선택한 답"과 "정답"이 올바르게 렌더링되어야 한다.', () => {
+      quizHistory.forEach((quiz, index) => {
+        const userAnswer = screen.getByTestId(
+          `user-answer-${index}`,
+        ).textContent;
+        const correctAnswer = screen.getByTestId(
+          `correct-answer-${index}`,
+        ).textContent;
+
+        expect(userAnswer).toBe(quiz.userAnswer);
+        expect(correctAnswer).toBe(quiz.correctAnswer);
+      });
+    });
   });
 });
