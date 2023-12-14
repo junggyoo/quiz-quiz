@@ -24,22 +24,21 @@ export const useQuiz = (quizData: QuizQuestion[]) => {
   const handleNextQuestion = () => {
     const isCorrect =
       userAnswer === quizData[currentQuestion].correctAnswer;
-    const quizHistory = {
+
+    setQuizHistory({
       ...quizData[currentQuestion],
       userAnswer,
       isCorrect,
-    };
-    setQuizHistory(quizHistory);
+    });
 
-    if (currentQuestion < quizData.length - 1) {
-      setCurrentQuestion(currentQuestion + 1);
-    } else {
-      const endTime = Date.now();
-      const timeTaken = getTimeTaken(startTime.current, endTime);
+    if (currentQuestion === quizData.length - 1) {
+      const timeTaken = getTimeTaken(startTime.current, Date.now());
       setTimeTaken(timeTaken);
       setView('result');
+      return;
     }
 
+    setCurrentQuestion(currentQuestion + 1);
     setIsAnswerChecked(false);
     setUserAnswer('');
   };
